@@ -1,3 +1,4 @@
+
 #home-page {
   display: flex;
   flex-direction: column;
@@ -28,6 +29,7 @@
     font-weight: bold;
     padding: 1em;
     border-radius: 2em;
+    text-decoration: none;
 }
 
 #search-btn:hover {

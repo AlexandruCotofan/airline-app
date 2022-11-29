@@ -1,0 +1,14 @@
+.flight-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90vw;
+}
+
+.flight-item > div {
+    margin: 1em 3em;
+}
+
+.flight-item > div :first-child {
+  font-weight: bold;
+}

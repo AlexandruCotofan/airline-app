@@ -1,0 +1,14 @@
+#flights-found {
+    background-color: rgb(255, 255, 255);
+    border-radius: 1em;
+    box-shadow: 0em 0.3em rgb(180, 180, 180);
+    margin: 1em;
+}
+
+#flights-found > * {
+    border-bottom: 2px solid rgb(180, 180, 180);
+}
+
+#flights-found > :last-child {
+    border-bottom: none;
+}

@@ -7,7 +7,7 @@ function HomePage() {
         <h1>Airline App</h1>
         <p>Truly, one of the apps of all time.</p>
       </div>
-      <button id="search-btn">Search for flights</button>
+      <a id="search-btn" href="/search">Search for flights</a>
     </div>
   );
 }
