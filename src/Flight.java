@@ -14,8 +14,8 @@ public class Flight {
         this.arrival = arrival;
         this.peopleOnBoard = peopleOnBoard;
         this.numberOfSeats = numberOfSeats;
-        this.allowLuggage;
-        this.numberOfStops;
+        this.allowLuggage = allowLuggage;
+        this.numberOfStops = numberOfStops;
     }
 
     public String getFlightNumber() {
