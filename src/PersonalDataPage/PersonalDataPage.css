@@ -1,0 +1,13 @@
+#data-form-container {
+  background-color: rgb(255, 255, 255);
+  padding: 2em;
+  border-radius: 2em;
+}
+
+#data-form-container input, #data-form-container select {
+  border: 2px solid rgb(0, 0, 200);
+}
+
+#passenger-forms {
+  margin-bottom: 1.5em;
+}
