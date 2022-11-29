@@ -1,5 +1,5 @@
 public class Flight {
-    private String flightNumber;
+    private int flightNumber;
     private String departure;
     private String arrival;
     private int peopleOnBoard;
@@ -7,15 +7,15 @@ public class Flight {
     private boolean allowLuggage;
     private int numberOfStops;
 
-    public Flight(String flightNumber, String departure, String arrival, int peopleOnBoard, int numberOfSeats, boolean allowLuggage,
+    public Flight(int flightNumber, String departure, String arrival, int peopleOnBoard, int numberOfSeats, boolean allowLuggage,
                   int numberOfStops) {
         this.flightNumber = flightNumber;
         this.departure = departure;
         this.arrival = arrival;
         this.peopleOnBoard = peopleOnBoard;
         this.numberOfSeats = numberOfSeats;
-        this.allowLuggage;
-        this.numberOfStops;
+        this.allowLuggage = allowLuggage;
+        this.numberOfStops = numberOfStops;
     }
 
     public String getFlightNumber() {
