@@ -18,7 +18,7 @@ public class Flight {
         this.numberOfStops = numberOfStops;
     }
 
-    public String getFlightNumber() {
+    public int getFlightNumber() {
         return flightNumber;
     }
 
