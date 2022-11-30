@@ -1,23 +1,37 @@
 import "./FlightItem.css";
 
-function FlightItem() {
+function FlightItem(props) {
+  const luggageMessage =
+    props.luggageAllowed === "Yes" ? "Luggage allowed" : "Luggage not allowed";
+  const flightDays =
+    props.departureDay === props.arrivalDay
+      ? props.departureDay
+      : props.departureDay + " - " + props.arrivalDay;
   return (
     <div className="flight-item">
       <div>
-        <p>20:00 - 22:30 (2h 30m)</p>
-        <p>COMPANY NAME</p>
+        <p>
+          {props.origin} - {props.destination}
+        </p>
+        <p>Flight Number: {props.flightNumber}</p>
       </div>
       <div>
-        <p>ORIGIN - DESTINATION</p>
-        <p>FLIGHT NUMBER</p>
+        <p>
+          {props.departureTime} - {props.arrivalTime} ({props.duration})
+        </p>
+        <p>{flightDays}</p>
       </div>
       <div>
-        <p>LAYOVER COUNT</p>
+        <p>{props.company}</p>
+        <p>layovers: {props.layoverCount}</p>
       </div>
       <div>
-        <p>PRICE</p>
-        <p>LUGGAGE ALLOWED</p>
+        <p>{props.price} euros</p>
+        <p>{luggageMessage}</p>
       </div>
+      <a className="btn" href="/book">
+        Book flight
+      </a>
     </div>
   );
 }
