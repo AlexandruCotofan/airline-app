@@ -59,14 +59,25 @@ function FlightSearchPage() {
   const [filteredCompany, SetFilteredCompany] = useState("");
   const [filteredLuggage, SetFilteredLuggage] = useState("");
 
-  const ChangeCompanyFilter = (selectedCompany) => {
-    SetFilteredCompany(selectedCompany);
-    console.log(filteredCompany.value);
+  const ChangeCompanyFilter = () => {
+    SetFilteredCompany(document.getElementById("company-filter").value);
   };
 
-  const filteredFlights = flights.filter((flight) => {
-    return (filteredCompany === "") ? flight : flight.company === filteredCompany;
-  });
+  const ChangeLuggageFilter = () => {
+    SetFilteredLuggage(document.getElementById("luggage-filter").value);
+  };
+
+  const filteredFlights = flights
+    .filter((flight) => {
+      return filteredCompany === ""
+        ? flight
+        : flight.company === filteredCompany;
+    })
+    .filter((flight) => {
+      return filteredLuggage === ""
+        ? flight
+        : flight.luggageAllowed === filteredLuggage;
+    });
 
   return (
     <div id="flight-search-page">
@@ -115,23 +126,25 @@ function FlightSearchPage() {
       <div id="search-filters">
         <label>Filters:</label>
         <select
+          id="company-filter"
           name="company-filter"
           className="page-selector"
-          value={filteredCompany}
           onChange={ChangeCompanyFilter}
         >
           <option value="">Filter company</option>
-          <option value="company1">Company 1</option>
-          <option value="company2">Company 2</option>
-          <option value="company3">Company 3</option>
+          <option value="Company 1">Company 1</option>
+          <option value="Company 2">Company 2</option>
+          <option value="Company 3">Company 3</option>
         </select>
         <select
+          id="luggage-filter"
           name="luggage-filter"
           className="page-selector"
+          onChange={ChangeLuggageFilter}
         >
           <option value="">Filter luggage</option>
-          <option value="yes">Allow luggage</option>
-          <option value="no">Don't allow luggage</option>
+          <option value="Yes">Allow luggage</option>
+          <option value="No">Don't allow luggage</option>
         </select>
       </div>
       <FlightList items={filteredFlights} />
