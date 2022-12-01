@@ -8,16 +8,15 @@ function FlightList(props) {
           key={flights.flightNumber}
           origin={flights.origin}
           destination={flights.destination}
-          departureDay={flights.departureDay}
-          departureTime={flights.departureTime}
-          arrivalDay={flights.arrivalDay}
-          arrivalTime={flights.arrivalTime}
-          duration={flights.duration}
+          companyName={flights.companyName}
           flightNumber={flights.flightNumber}
-          company={flights.company}
-          layoverCount={flights.layoverCount}
-          price={flights.price}
-          luggageAllowed={flights.luggageAllowed}
+          departureDate={flights.departureDate}
+          arrivalDate={flights.arrivalDate}
+          duration={flights.duration}
+          layovers={flights.layovers}
+          pricePerPerson={flights.pricePerPerson}
+          pricePerHandLuggage={flights.pricePerHandLuggage}
+          pricePerCheckedLuggage={flights.pricePerCheckedLuggage}
         />
       ))}
     </div>

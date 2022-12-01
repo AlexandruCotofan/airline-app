@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FlightList from "../FlightList/FlightList";
 import "./FlightSearchPage.css";
+import axios from "axios";
 
 function SetRoundTripDateDisplay() {
   if (document.getElementById("round-trip-select").value === "no") {
@@ -58,6 +59,7 @@ const flights = [
 function FlightSearchPage() {
   const [filteredCompany, SetFilteredCompany] = useState("");
   const [filteredLuggage, SetFilteredLuggage] = useState("");
+  const [flightsArray, SetFlightsArray] = useState([]);
 
   const ChangeCompanyFilter = () => {
     SetFilteredCompany(document.getElementById("company-filter").value);
@@ -67,16 +69,29 @@ function FlightSearchPage() {
     SetFilteredLuggage(document.getElementById("luggage-filter").value);
   };
 
-  const filteredFlights = flights
+  useEffect(() => {
+    const getFlightData = async () => {
+      const flightsData = await axios("http://localhost:3001/flights");
+      SetFlightsArray(flightsData.data);
+    };
+    getFlightData();
+  }, []);
+
+  const filteredFlights = flightsArray
     .filter((flight) => {
       return filteredCompany === ""
         ? flight
-        : flight.company === filteredCompany;
+        : flight.companyName === filteredCompany;
     })
     .filter((flight) => {
       return filteredLuggage === ""
         ? flight
-        : flight.luggageAllowed === filteredLuggage;
+        : ((flight.pricePerHandLuggage > 0 ||
+            flight.pricePerCheckedLuggage > 0) &&
+            filteredLuggage === "Yes") ||
+            (flight.pricePerHandLuggage == 0 &&
+              flight.pricePerCheckedLuggage == 0 &&
+              filteredLuggage === "No");
     });
 
   return (
@@ -124,25 +139,26 @@ function FlightSearchPage() {
         </button>
       </form>
       <div id="search-filters">
-        <label>Filters:</label>
+        <label>Filter company:</label>
         <select
           id="company-filter"
           name="company-filter"
           className="page-selector"
           onChange={ChangeCompanyFilter}
         >
-          <option value="">Filter company</option>
+          <option value="">No filter</option>
           <option value="Company 1">Company 1</option>
           <option value="Company 2">Company 2</option>
           <option value="Company 3">Company 3</option>
         </select>
+        <label>Filter luggage:</label>
         <select
           id="luggage-filter"
           name="luggage-filter"
           className="page-selector"
           onChange={ChangeLuggageFilter}
         >
-          <option value="">Filter luggage</option>
+          <option value="">No filter</option>
           <option value="Yes">Allow luggage</option>
           <option value="No">Don't allow luggage</option>
         </select>

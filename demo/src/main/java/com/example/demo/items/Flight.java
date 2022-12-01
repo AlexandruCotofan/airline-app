@@ -4,9 +4,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Flight {
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
     private String origin;
     private String destination;
+    private String companyName;
     private String flightNumber;
     private LocalDateTime departureDate;
     private LocalDateTime arrivalDate;
@@ -16,11 +17,12 @@ public class Flight {
     private int pricePerHandLuggage;
     private int pricePerCheckedLuggage;
 
-    public Flight(String origin, String destination, String flightNumber,
+    public Flight(String origin, String destination, String companyName, String flightNumber,
                   LocalDateTime departureDate, LocalDateTime arrivalDate,
                   int layovers, int pricePerPerson, int pricePerHandLuggage, int pricePerCheckedLuggage) {
         this.setOrigin(origin);
         this.setDestination(destination);
+        this.setCompanyName(companyName);
         this.setFlightNumber(flightNumber);
         this.setDepartureDate(departureDate);
         this.setArrivalDate(arrivalDate);
@@ -118,5 +120,13 @@ public class Flight {
 
     public void setFlightNumber(String flightNumber) {
         this.flightNumber = flightNumber;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 }
